@@ -13,11 +13,11 @@ public class OverridingFinalToStringPuzzle {
     }
     public static void main(String[] args) throws InvocationTargetException, IllegalAccessException {
         OverridingFinalToStringPuzzle i = new OverridingFinalToStringPuzzle() {
-            public static String convert(Bull bull) {
+            public static String convert(Bull bull) { // It's hidden :-(
                 return OverridingFinalToStringPuzzle.convert(bull).replace("Bull", "Bear");
             }
         };
-        String result = (String) i.getClass().getDeclaredMethods()[0].invoke(i, new Bull());
+        String result = (String) i.getClass().getDeclaredMethods()[0].invoke(i, new Bull()); // Not hidden anymore :-D
         if(!result.equals("Bear")) {
             throw new AssertionError("Should be \"Bear\"");
         }
