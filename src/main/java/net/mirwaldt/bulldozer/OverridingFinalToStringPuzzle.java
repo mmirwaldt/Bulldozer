@@ -17,7 +17,7 @@ public class OverridingFinalToStringPuzzle {
                 return OverridingFinalToStringPuzzle.convert(bull).replace("Bull", "Bear");
             }
         };
-        String result = (String) i.getClass().getDeclaredMethods()[0].invoke(i, new Bull()); // Not hidden anymore :-D
+        String result = (String) i.getClass().getDeclaredMethods()[0].invoke(null, new Bull()); // Not hidden anymore :-D
         if(!result.equals("Bear")) {
             throw new AssertionError("Should be \"Bear\"");
         }
